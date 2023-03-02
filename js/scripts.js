@@ -2,7 +2,7 @@ function newItem() {
   // Add new item to the list:
   let inputValue = $('#input').val();
   if (inputValue === '') {
-    alert("You must write something.");
+    alert("Please Write Something!!.");
   } else {
     let li = $('<li></li>');
     li.append(inputValue);
