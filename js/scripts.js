@@ -1,31 +1,31 @@
-function newItem() {
-  // Add new item to the list:
+function newItem(){
+  // 1. Adding a new item to the list of items:
+  let li = $('<li></li>');
   let inputValue = $('#input').val();
-  if (inputValue === '') {
-    alert("Please Write a list item!!.");
-  } else {
-    let li = $('<li></li>');
-    li.append(inputValue);
-    $('#list').append(li);
+  let text = $('<span></span>').text(inputValue);
+  li.append(text);
 
-    // Cross item from the lists
-    function crossOut() {
-      li.toggleClass("strike");
-    }
-    li.on("dblclick", function crossOut() {
-      li.toggleClass("strike");
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    $('#list').append(li);
+  }
+
+  // 2. Crossing out an item from the list of items:
+  li.on("dblclick", function() {
+    li.toggleClass("strike");
   });
 
-    // Delete button "X":
-    let crossOutButton = $('<crossOutButton>X</crossOutButton>');
-    li.append(crossOutButton);
-    crossOutButton.on("click", deleteListItem);
+  // 3(i). Adding the delete button "X":
+  let crossOutButton = $('<crossOutButton></crossOutButton>');
+  crossOutButton.append(document.createTextNode('X'));
+  li.append(crossOutButton);
 
-    // Add class "delete" totally from css file:
-    function deleteListItem() {
-      li.addClass("delete");
-    }
-  }
-}
-  // Reorder of items when dragged to change positions:
+  // 3(ii). Adding CLASS DELETE (DISPLAY: NONE) from the css:
+  crossOutButton.on("click", function() {
+    li.addClass("delete");
+  });
+
+  // 4. Reordering the items:
   $('#list').sortable();
+}
