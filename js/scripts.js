@@ -27,5 +27,5 @@ function newItem() {
     }
   }
 }
-  // Reorder of items:
+  // Reorder of items when dragged to change positions:
   $('#list').sortable();
